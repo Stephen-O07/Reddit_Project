@@ -1,0 +1,6 @@
+pymongo
+praw
+pandas
+kafka-python
+pyspark
+python-dotenv
