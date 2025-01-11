@@ -10,15 +10,20 @@ with open("config.json") as f:
 mongodb_username = config["mongodb_username"]
 mongodb_password = config["mongodb_password"]
 
+
+# mongodb_username = "spinice"
+# mongodb_password = "Pass7989Word"
+
 # MongoDB Database and Collection
 database = "reddit_database"  # The database in MongoDB where you want to store the data
-collection = "dataengineering"  # The collection name in MongoDB
+collection = "dataengineeringjobs"  # The collection name in MongoDB
 
 # MongoDB URI
-uri = f"mongodb+srv://{mongodb_username}:{mongodb_password}@amdari-cluster.ynzr6.mongodb.net/{database}?retryWrites=true&w=majority"
+uri = f"mongodb+srv://{mongodb_username}:{mongodb_password}@stephen-cluster.s1mfj.mongodb.net/{database}?retryWrites=true&w=majority"  # Update with your MongoDB URI
+
 
 # Kafka Configuration
-kafka_topic = "redditstream"  # Kafka topic to consume from
+kafka_topic = "reddit_topic"  # Kafka topic to consume from
 kafka_bootstrap_servers = "localhost:9092"  # Kafka bootstrap server address
 
 # Create Spark Session

@@ -1,0 +1,27 @@
+# Use the specific version of the Bitnami Spark image
+FROM bitnami/spark:3.4.1
+
+# Install necessary utilities (coreutils for id, date, mv)
+RUN apt-get update && \
+    apt-get install -y coreutils wget && \
+    apt-get clean
+
+# Install Hadoop (optional, if you need it)
+RUN wget https://archive.apache.org/dist/hadoop/core/hadoop-3.2.1/hadoop-3.2.1.tar.gz && \
+    tar -xzvf hadoop-3.2.1.tar.gz && \
+    mv hadoop-3.2.1 /usr/local/hadoop
+
+# Set Hadoop environment variables (if Hadoop is installed)
+ENV HADOOP_HOME=/usr/local/hadoop
+ENV HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+ENV PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+
+# Set Spark environment variables
+ENV SPARK_HOME=/opt/bitnami/spark
+ENV PATH=$PATH:$SPARK_HOME/bin
+
+# Expose necessary ports for Spark
+EXPOSE 7077 8081 8082 8083
+
+# Set the command to start Spark
+CMD ["/opt/bitnami/scripts/spark/run.sh"]

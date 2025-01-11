@@ -1,2 +1,4 @@
-mongodb_username = 'root'
-mongodb_password = 'Password4567'
+{
+    "mongodb_username": "spinice",
+    "mongodb_password": "Pass7989Word"
+}
